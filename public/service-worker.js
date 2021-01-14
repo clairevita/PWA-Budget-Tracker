@@ -1,14 +1,15 @@
-const CACHE_NAME = "static-cache-v2";
-const DATA_CACHE_NAME = "data-cache-v1";
-const FILES_TO_CACHE = [
+const TO_CACHE = [
     "/",
     "/index.html",
     "/index.js",
-    "/style.css",
+    "/styles.css",
     "/manifest.webmanifest",
     "/assets/images/icons/icon-192x192.png",
     "/assets/images/icons/icon-512x512.png"
-]
+];
+
+const DATA_CACHE_NAME = "data-cache-v1";
+const CACHE_NAME = "static-cache-v2";
 
 console.log("Service Worker has been referenced!");
 // install
@@ -16,7 +17,7 @@ self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then(cache => {
             console.log("Your files were pre-cached successfully!");
-            return cache.addAll(staticFilesToPreCache);
+            return cache.addAll(TO_CACHE);
         })
     );
 
